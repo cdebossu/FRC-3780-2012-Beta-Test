@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.commands.DriveWithJoystick;
@@ -35,12 +36,14 @@ public class Chassis extends Subsystem {
     private Chassis() {
         drive = new RobotDrive(new Jaguar(LEFT_MOTOR_PORT), new Jaguar(RIGHT_MOTOR_PORT));
         drive.setSafetyEnabled(false);
+        
     }
     /**
      * Drive the robot with the main joystick
      */
     public void driveWithJoystick() {
         drive.arcadeDrive(OI.getInstance().getDriveJoystick());
+        
     }
 }
 

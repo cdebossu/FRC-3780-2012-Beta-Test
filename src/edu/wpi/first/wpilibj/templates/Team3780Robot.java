@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Chassis;
  * directory.
  */
 public class Team3780Robot extends IterativeRobot {
-    Chassis chassis;
+    Chassis m_chassis;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -32,7 +32,7 @@ public class Team3780Robot extends IterativeRobot {
         OI.getInstance();
         // initialize all subsystems here. The result of getInstance() is
         // intentionally ignored.
-        Chassis.getInstance();
+        m_chassis = Chassis.getInstance();
     }
 
     public void autonomousInit() {

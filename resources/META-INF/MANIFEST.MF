@@ -1,6 +1,6 @@
 MIDlet-Name: Team3780BetaTest
 MIDlet-Version: 1.0.0
 MIDlet-Vendor: FIRST
-MIDlet-1: Team3780Robot, , edu.wpi.first.wpilibj.templates.Team3780Robot
+MIDlet-1: Team3780Robot, ,  org.frc3780.robot.Team3780Robot
 MicroEdition-Profile: IMP-1.0
 MicroEdition-Configuration: CLDC-1.1

@@ -1,6 +1,8 @@
 
 package org.frc3780.robot;
 
+import org.frc3780.robot.commands.ShiftUp;
+import org.frc3780.robot.commands.ShiftDown;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -20,7 +22,7 @@ public class OI {
         driveStick = new Joystick(DRIVE_JOYSTICK_PORT);
         
         shiftUpButton = new JoystickButton(driveStick, 3);
-        shiftDownButton = new JoystickButton(driveStick, 4);
+        shiftDownButton = new JoystickButton(driveStick, 2);
          
         shiftDownButton.whenPressed(new ShiftDown());
         shiftUpButton.whenPressed(new ShiftUp());

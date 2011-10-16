@@ -7,6 +7,7 @@ package org.frc3780.robot.components;
 import com.sun.squawk.util.NotImplementedYetException;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
+import org.frc3780.robot.Global;
 
 /**
  * This class handles Super Shifters that are controlled by a servo. Makes them appear as one motor
@@ -15,8 +16,8 @@ import edu.wpi.first.wpilibj.SpeedController;
  */
 
 public final class ServoSuperShifter implements Shifter {
-    private static final double LOW_GEAR_SERVO_SETTING = 0.8;
-    private static final double HIGH_GEAR_SERVO_SETTING = 0.2;
+    private static final double LOW_GEAR_SERVO_SETTING = 0.7;
+    private static final double HIGH_GEAR_SERVO_SETTING = 0.3;
     
     private SpeedController m_s1;
     private SpeedController m_s2;
@@ -47,7 +48,14 @@ public final class ServoSuperShifter implements Shifter {
      * @return Current robot gear
      */
     public int getGear() {
-        return m_gear;
+        
+        if(m_shifter.get() <= HIGH_GEAR_SERVO_SETTING + .05 && m_shifter.get() >= HIGH_GEAR_SERVO_SETTING - .05) {
+            return 2;
+        } else if(m_shifter.get() <= LOW_GEAR_SERVO_SETTING + 0.05 && m_shifter.get() >= LOW_GEAR_SERVO_SETTING - .05) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
     /**
      * Shifts the Shifter up

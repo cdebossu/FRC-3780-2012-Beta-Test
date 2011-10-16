@@ -20,6 +20,11 @@ import org.frc3780.robot.subsystems.Chassis;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
+/**
+ * 
+ * @author Oliver Graff (Team 3780)
+ */
 public class Team3780Robot extends IterativeRobot {
     
     /**

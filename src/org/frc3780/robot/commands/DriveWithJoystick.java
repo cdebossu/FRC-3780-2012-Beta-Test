@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.frc3780.robot.subsystems.Chassis;
 
 /**
- *
- * @author ograff
+ * Drive With Joystick
+ * @author Oliver Graff (Team 3780)
  */
 public class DriveWithJoystick extends Command {
     Chassis m_chassis;

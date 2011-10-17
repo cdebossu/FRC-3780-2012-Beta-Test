@@ -6,6 +6,7 @@
 package org.frc3780.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.util.AllocationException;
@@ -29,8 +30,10 @@ public class Chassis extends Subsystem {
     public static final int LEFT_SHIFTER_PORT = 10;
     
     private static Chassis instance = null;
-
+    
     private ShiftingRobotDrive m_drive;
+    
+    private boolean m_fineControl;
     public static Chassis getInstance() {
         if(instance == null) {
             instance = new Chassis();
@@ -56,6 +59,8 @@ public class Chassis extends Subsystem {
             }
             m_drive.setSafetyEnabled(false);
             m_drive.setMaxOutput(Global.SPEED_LIMIT);
+            
+            m_fineControl = false;
         }
         
     }
@@ -63,7 +68,12 @@ public class Chassis extends Subsystem {
      * Drive the robot with the main joystick
      */
     public void driveWithJoystick() {
-        m_drive.arcadeDrive(OI.getInstance().getDriveJoystick());
+        
+        if(m_fineControl) {
+            m_drive.arcadeDrive(OI.getInstance().getDriveJoystick().getAxis(AxisType.kY)*Global.SCALING_FOR_FINE_CONTROL, OI.getInstance().getDriveJoystick().getAxis(AxisType.kX)*Global.SCALING_FOR_FINE_CONTROL);
+        } else {
+            m_drive.arcadeDrive(OI.getInstance().getDriveJoystick());
+        }
     }
     /**
      * Gets the current gear
@@ -84,6 +94,12 @@ public class Chassis extends Subsystem {
     public void shiftDown() {
         m_drive.shiftDown();
     }
-    
-}
 
+    public boolean isFineControl() {
+        return m_fineControl;
+    }
+
+    public void setFineControl(boolean fineControl) {
+        this.m_fineControl = fineControl;
+    }   
+}

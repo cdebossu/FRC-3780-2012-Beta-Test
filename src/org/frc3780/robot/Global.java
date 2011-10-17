@@ -10,4 +10,6 @@ public class Global {
     
     public static final int HIGHEST_GEAR = 2;
     public static final int LOWEST_GEAR = 1;
+    
+    public static final double SPEED_LIMIT = .7;
 }

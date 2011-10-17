@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.util.AllocationException;
+import org.frc3780.robot.Global;
 import org.frc3780.robot.OI;
 import org.frc3780.robot.commands.DriveWithJoystick;
 import org.frc3780.robot.components.ServoSuperShifter;
@@ -54,6 +55,7 @@ public class Chassis extends Subsystem {
                 System.err.println(ax);
             }
             m_drive.setSafetyEnabled(false);
+            m_drive.setMaxOutput(Global.SPEED_LIMIT);
         }
         
     }

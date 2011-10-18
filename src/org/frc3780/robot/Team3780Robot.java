@@ -9,6 +9,7 @@ package org.frc3780.robot;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Watchdog;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import org.frc3780.robot.subsystems.Chassis;
@@ -38,6 +39,8 @@ public class Team3780Robot extends IterativeRobot {
         // initialize all subsystems here. The result of getInstance() is
         // intentionally ignored.
         Chassis.getInstance();
+        Watchdog.getInstance().setEnabled(true);
+        Watchdog.getInstance().setExpiration(0.2);
     }
 
     public void autonomousInit() {

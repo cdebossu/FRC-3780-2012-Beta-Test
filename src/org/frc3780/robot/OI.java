@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.frc3780.robot.commands.DisableFineControl;
 import org.frc3780.robot.commands.EnableFineControl;
+import org.frc3780.robot.commands.FeedWatchdog;
 /**
  * 
  * @author Oliver Graff (Team 3780)
@@ -24,15 +25,20 @@ public class OI {
     public final Button shiftUpButton;
     public final Button shiftDownButton;
     
+    private final Button feedWatchdogButton;
+    
     private final Button fineControlButton;
     private OI() {
         driveStick = new Joystick(DRIVE_JOYSTICK_PORT);
         
         shiftUpButton = new JoystickButton(driveStick, 3);
         shiftDownButton = new JoystickButton(driveStick, 2);
-         
-        shiftDownButton.whenPressed(new ShiftDown());
+        
+        feedWatchdogButton = new JoystickButton(driveStick, 7);
+        feedWatchdogButton.whileHeld(new FeedWatchdog());
+        
         shiftUpButton.whenPressed(new ShiftUp());
+        shiftUpButton.whenReleased(new ShiftDown());
         
         fineControlButton = new JoystickButton(driveStick, FINE_CONTROL);
         fineControlButton.whenPressed(new EnableFineControl());

@@ -61,6 +61,8 @@ public class Chassis extends Subsystem {
             m_drive.setMaxOutput(Global.SPEED_LIMIT);
             
             m_fineControl = false;
+            
+            m_drive.shiftDown();
         }
         
     }
